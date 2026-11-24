@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Saya - Karakter Asli</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Custom Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background-color: #f3f4f6; /* Abu-abu terang */
+        }
+
+        /* --- Animasi Background Gelembung --- */
+        .bubbles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Paling belakang */
+            overflow: hidden;
+            background: linear-gradient(180deg, #fce7f3 0%, #e5e7eb 100%);
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            background-color: rgba(236, 72, 153, 0.4);
+            border-radius: 50%;
+            animation: rise infinite ease-in;
+        }
+
+        @keyframes rise {
+            0% { bottom: -100px; transform: translateX(0); opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { bottom: 120vh; transform: translateX(100px); opacity: 0; }
+        }
+
+        /* --- Animasi Karakter Melayang --- */
+        .floating-char {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Fade Effect */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hide Scrollbar */
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center relative p-4 text-gray-700">
+
+    <!-- Background Bubbles -->
+    <div id="bubble-container" class="bubbles"></div>
+
+    <!-- 
+      --- KARAKTER DEKORASI (FOREGROUND) --- 
+      Perubahan: 
+      1. URL gambar diganti sesuai permintaan.
+      2. Dihapus class 'rounded-full' dan border agar bentuk sesuai aslinya.
+      3. Ditambahkan 'object-contain' agar gambar pas di dalam kotaknya.
+    -->
+    
+    <!-- Kiri Atas (Pochacco) -->
+    <div class="fixed top-[8%] left-[2%] w-24 h-24 md:w-32 md:h-32 floating-char z-50 pointer-events-none drop-shadow-lg" style="animation-delay: 0s;">
+        <img src="https://res.cloudinary.com/f8iso1hc/image/upload/v1795528005/Chibi_web_3.png" alt="Karakter Kiri Atas" class="w-full h-full object-contain">
+    </div>
+
+    <!-- Kanan Atas (Cinnamoroll) -->
+    <div class="fixed top-[10%] right-[2%] w-28 h-28 md:w-36 md:h-36 floating-char z-50 pointer-events-none drop-shadow-lg" style="animation-delay: 1.5s;">
+        <img src="https://res.cloudinary.com/f8iso1hc/image/upload/v1795528006/Chibi_web_4.png" alt="Karakter Kanan Atas" class="w-full h-full object-contain">
+    </div>
+
+    <!-- Kiri Bawah (Pompompurin) -->
+    <div class="fixed bottom-[12%] left-[3%] w-28 h-28 md:w-36 md:h-36 floating-char z-50 pointer-events-none drop-shadow-lg" style="animation-delay: 0.5s;">
+        <img src="https://res.cloudinary.com/f8iso1hc/image/upload/v1795527995/Chibi_web_2.png" alt="Karakter Kiri Bawah" class="w-full h-full object-contain">
+    </div>
+
+    <!-- Kanan Bawah (My Melody) -->
+    <div class="fixed bottom-[8%] right-[3%] w-24 h-24 md:w-32 md:h-32 floating-char z-50 pointer-events-none drop-shadow-lg" style="animation-delay: 2s;">
+        <img src="https://res.cloudinary.com/f8iso1hc/image/upload/v1795527995/Chibi_web_1.png" alt="Karakter Kanan Bawah" class="w-full h-full object-contain">
+    </div>
+
+
+    <!-- --- Main Content Card (z-10, di belakang karakter) --- -->
+    <main class="w-full max-w-md glass-card rounded-3xl p-6 md:p-8 z-10 relative border-t-4 border-pink-400 mx-4 my-8">
+        
+        <!-- Foto Profil -->
+        <div class="flex justify-center mb-4">
+            <div class="relative">
+                <div class="w-28 h-28 md:w-32 md:h-32 rounded-full p-1 bg-gradient-to-tr from-pink-400 to-gray-300 shadow-lg">
+                    <img src="https://res.cloudinary.com/f8iso1hc/image/upload/v1795556029/file_00000000c7148207b21014d4d292cd51.png" 
+                         alt="Foto Profil" 
+                         class="w-full h-full rounded-full object-cover bg-white border-2 border-white">
+                </div>
+                <!-- Status Dot -->
+                <div class="absolute bottom-2 right-2 w-5 h-5 bg-green-400 border-2 border-white rounded-full animate-pulse"></div>
+            </div>
+        </div>
+
+        <!-- Nama & Deskripsi -->
+        <div class="text-center mb-6">
+            <h1 class="text-2xl font-bold text-gray-800">Alyabotz</h1>
+            <p class="text-sm text-pink-500 font-semibold mb-2">@Alyabotz</p>
+            <p class="text-gray-600 text-sm leading-relaxed">
+                Welcome to my page
+            </p>
+        </div>
+
+        <!-- Teks Slide -->
+        <div class="bg-gray-100 rounded-xl p-3 mb-6 text-center border-l-4 border-pink-400 shadow-sm min-h-[60px] flex items-center justify-center">
+            <p id="text-slide" class="text-sm font-medium text-gray-700 italic fade-in">
+                ✨ Welcome my website ✨
+            </p>
+        </div>
+
+        <!-- Link Buttons Area -->
+        <div class="flex flex-col gap-3">
+            
+            <!-- Tombol 1 -->
+            <a href="https://www.riyzonly.my.id" target="_blank" class="group relative flex items-center justify-center w-full py-3 bg-white border-2 border-gray-200 text-gray-700 rounded-xl hover:border-pink-400 hover:text-pink-500 hover:shadow-md transition-all duration-300">
+                <i class="fas fa-globe absolute left-4 text-xl group-hover:scale-110 transition-transform"></i>
+                <span class="font-semibold">Join Group Bot</span>
+            </a>
+
+            <!-- Tombol 2 -->
+            <a href="https://whatsapp.com/channel/0029VaigIC6LY6d9yUP97v3R" target="_blank" class="group relative flex items-center justify-center w-full py-3 bg-white border-2 border-gray-200 text-gray-700 rounded-xl hover:border-pink-400 hover:text-pink-500 hover:shadow-md transition-all duration-300">
+                <i class="fas fa-circle-info absolute left-4 text-xl group-hover:scale-110 transition-transform"></i>
+                <span class="font-semibold">Channel Whatsapp</span>
+            </a>
+
+            <!-- Tombol Opsi -->
+            <div class="w-full relative z-20">
+                <button onclick="toggleOptions()" id="option-btn" class="w-full py-3 bg-gradient-to-r from-pink-500 to-pink-400 text-white rounded-xl shadow-lg hover:shadow-pink-500/30 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-between px-6">
+                    <span class="font-bold">Rental WhatsApp Bot</span>
+                    <i id="chevron-icon" class="fas fa-chevron-down transition-transform duration-300"></i>
+                </button>
+
+                <!-- Hidden Links -->
+                <div id="hidden-links" class="hidden flex-col gap-3 mt-3 overflow-hidden transition-all duration-500 ease-in-out">
+                    <a href="https://wa.me/6281572486452?text=mau+rental+bot+Alya" class="flex items-center p-3 bg-gray-50 hover:bg-pink-50 rounded-lg border border-gray-100 hover:border-pink-200 transition-colors">
+                        <div class="w-8 h-8 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <span class="text-gray-700 font-medium text-sm">Trial 1 Day</span>
+                    </a>
+                    <a href="https://wa.me/6281572486452?text=mau+rental+bot+Alya" class="flex items-center p-3 bg-gray-50 hover:bg-pink-50 rounded-lg border border-gray-100 hover:border-pink-200 transition-colors">
+                        <div class="w-8 h-8 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <span class="text-gray-700 font-medium text-sm">Rental 30 Hari</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-8 pt-6 border-t border-gray-200">
+            <div class="flex justify-center gap-6">
+                <a href="https://www.instagram.com/rizqiridwani1?hvrq=MXgxZHUwenV3YXE1aQ==/" class="text-gray-400 hover:text-pink-500 text-2xl transition-transform hover:scale-110 hover:-rotate-12">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.tiktok.com/@ahbiasaaja32" class="text-gray-400 hover:text-gray-800 text-2xl transition-transform hover:scale-110 hover:rotate-12">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://www.facebook.com/rizqiridwani1" class="text-gray-400 hover:text-blue-400 text-2xl transition-transform hover:scale-110 hover:-rotate-12">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://github.com/Rizkyxd01" class="text-gray-400 hover:text-red-600 text-2xl transition-transform hover:scale-110 hover:rotate-12">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <p class="text-center text-xs text-gray-400 mt-4">© Alyabotz</p>
+        </div>
+
+    </main>
+
+    <script>
+        // --- Logic Bubbles ---
+        const bubbleContainer = document.getElementById('bubble-container');
+        function createBubble() {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+            const size = Math.random() * 60 + 20 + 'px';
+            bubble.style.width = size;
+            bubble.style.height = size;
+            bubble.style.left = Math.random() * 100 + '%';
+            bubble.style.animationDuration = Math.random() * 5 + 5 + 's';
+            bubble.style.animationDelay = Math.random() * 5 + 's';
+            bubbleContainer.appendChild(bubble);
+            setTimeout(() => { bubble.remove(); }, 10000); 
+        }
+        for(let i=0; i<15; i++) createBubble();
+        setInterval(createBubble, 1000);
+
+        // --- Logic Slide Teks ---
+        const textElement = document.getElementById('text-slide');
+        const texts = [
+            "🎫 list harga ada dibawah 🎫",
+            "🚀 Jangan lupa follow channel whatsapp 🚀",
+            "💸 Rental bot: 200k setahun 💸",
+            " 🌀 Rental bot: 15k sebulan 🌀"
+        ];
+        let textIndex = 0;
+        setInterval(() => {
+            textElement.style.opacity = '0';
+            textElement.style.transform = 'translateY(5px)';
+            setTimeout(() => {
+                textIndex = (textIndex + 1) % texts.length;
+                textElement.innerText = texts[textIndex];
+                textElement.style.opacity = '1';
+                textElement.style.transform = 'translateY(0)';
+            }, 500);
+        }, 4000);
+
+        // --- Logic Toggle Opsi ---
+        function toggleOptions() {
+            const hiddenLinks = document.getElementById('hidden-links');
+            const chevron = document.getElementById('chevron-icon');
+            if (hiddenLinks.classList.contains('hidden')) {
+                hiddenLinks.classList.remove('hidden');
+                hiddenLinks.classList.add('flex');
+                chevron.style.transform = 'rotate(180deg)';
+            } else {
+                hiddenLinks.classList.add('hidden');
+                hiddenLinks.classList.remove('flex');
+                chevron.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+</body>
+</html>
+
+
